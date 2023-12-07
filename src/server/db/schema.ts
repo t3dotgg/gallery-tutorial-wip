@@ -16,7 +16,9 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mysqlTable = mysqlTableCreator((name) => `gallery-tutorial_${name}`);
+export const mysqlTable = mysqlTableCreator(
+  (name) => `gallery-tutorial_${name}`,
+);
 
 export const posts = mysqlTable(
   "post",
@@ -28,7 +30,24 @@ export const posts = mysqlTable(
       .notNull(),
     updatedAt: timestamp("updatedAt").onUpdateNow(),
   },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
+  (postModel) => ({
+    nameIndex: index("name_idx").on(postModel.name),
+  }),
+);
+
+export const images = mysqlTable(
+  "image",
+  {
+    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
+    url: varchar("url", { length: 256 }).notNull(),
+    createdAt: timestamp("created_at")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp("updatedAt").onUpdateNow(),
+
+    name: varchar("name", { length: 256 }).notNull(),
+  },
+  (imageModel) => ({
+    urlIndex: index("url_idx").on(imageModel.url),
+  }),
 );
