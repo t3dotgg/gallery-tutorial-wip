@@ -27,27 +27,28 @@ export function ImageGrid(props: { images: Images }) {
   );
 
   return (
-    <div className="flex flex-wrap justify-center gap-4">
-      {props.images.map((image) => (
-        <button
-          key={image.id}
-          className="flex w-60 flex-col justify-between"
-          onClick={() => store.setFullScreenImage(image.id)}
-        >
-          <div className="relative h-44 w-60">
-            <Image
-              alt={image.name}
-              src={image.url}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div>{image.name}</div>
-        </button>
-      ))}
-
+    <>
       {fullScreenImage && <FullScreenImage image={fullScreenImage} />}
-    </div>
+      <div className="flex h-full flex-wrap justify-center gap-4 overflow-y-auto p-4">
+        {props.images.map((image) => (
+          <button
+            key={image.id}
+            className="flex w-60 flex-col justify-between"
+            onClick={() => store.setFullScreenImage(image.id)}
+          >
+            <div className="relative h-44 w-60">
+              <Image
+                alt={image.name}
+                src={image.url}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>{image.name}</div>
+          </button>
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -66,7 +67,7 @@ function FullScreenImage(props: { image: Images[number] }) {
   });
 
   return (
-    <div className="absolute right-0 top-0 flex h-screen w-screen flex-col justify-center bg-black/80">
+    <div className="absolute right-0 top-0 z-10 flex h-screen w-screen flex-col justify-center bg-black/90">
       <Image
         alt={props.image.name}
         src={props.image.url}

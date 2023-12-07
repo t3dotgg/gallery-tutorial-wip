@@ -17,7 +17,7 @@ export default async function HomePage() {
   }
 
   return (
-    <main className="p-12">
+    <main className="contents">
       <ImageGrid images={data} />
     </main>
   );

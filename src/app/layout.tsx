@@ -21,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body
+        className={`font-sans ${inter.variable} h-screen flex-col overflow-hidden`}
+      >
         <Topnav />
         {children}
       </body>
