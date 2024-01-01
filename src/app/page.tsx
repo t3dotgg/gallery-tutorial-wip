@@ -5,6 +5,7 @@ async function safeFetch() {
   try {
     return { data: await getImages() } as const;
   } catch (e) {
+    console.error("err", e);
     return { error: "Failed to get images" } as const;
   }
 }
