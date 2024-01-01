@@ -17,7 +17,7 @@ export default async function HomePage() {
   }
 
   return (
-    <main className="contents">
+    <main className="overflow-y-auto">
       <ImageGrid images={data} />
     </main>
   );

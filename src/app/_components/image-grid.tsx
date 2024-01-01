@@ -29,7 +29,7 @@ export function ImageGrid(props: { images: Images }) {
   return (
     <>
       {fullScreenImage && <FullScreenImage image={fullScreenImage} />}
-      <div className="flex h-full flex-wrap justify-center gap-4 overflow-y-auto p-4">
+      <div className="mx-auto flex flex-wrap justify-center gap-4 p-4">
         {props.images.map((image) => (
           <button
             key={image.id}

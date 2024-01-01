@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`font-sans ${inter.variable} h-screen flex-col overflow-hidden`}
+        className={`font-sans ${inter.variable} grid h-screen grid-rows-[auto_1fr]`}
       >
         <Topnav />
         {children}
