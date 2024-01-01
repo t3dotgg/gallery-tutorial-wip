@@ -43,7 +43,7 @@ const generateMockData = (amount: number) => {
 
 type ImageType = InferSelectModel<typeof images>;
 export const getImages = async (): Promise<ImageType[]> => {
-  // return await db.query.images.findMany();
+  return await db.query.images.findMany();
 
-  return generateMockData(24);
+  // return generateMockData(24);
 };
