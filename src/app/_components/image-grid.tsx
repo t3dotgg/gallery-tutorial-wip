@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import { create } from "zustand";
 
@@ -31,11 +32,12 @@ export function ImageGrid(props: { images: Images }) {
       {fullScreenImage && <FullScreenImage image={fullScreenImage} />}
       <div className="mx-auto flex flex-wrap justify-center gap-4 p-4">
         {props.images.map((image) => (
-          <button
-            key={image.id}
-            className="flex w-60 flex-col justify-between"
-            onClick={() => store.setFullScreenImage(image.id)}
-          >
+          // <button
+          //   key={image.id}
+          //   className="flex w-60 flex-col justify-between"
+          //   onClick={() => store.setFullScreenImage(image.id)}
+          // >
+          <Link href={`/img/${image.id}`}>
             <div className="relative h-44 w-60">
               <Image
                 alt={image.name}
@@ -45,7 +47,8 @@ export function ImageGrid(props: { images: Images }) {
               />
             </div>
             <div>{image.name}</div>
-          </button>
+          </Link>
+          // </button>
         ))}
       </div>
     </>

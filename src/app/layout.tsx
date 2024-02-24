@@ -24,7 +24,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`font-sans ${inter.variable} grid h-screen grid-rows-[auto_1fr]`}
+          className={`dark font-sans ${inter.variable} grid h-screen grid-rows-[auto_1fr]`}
         >
           <Topnav />
           {children}
