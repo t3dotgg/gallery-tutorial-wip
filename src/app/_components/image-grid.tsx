@@ -37,7 +37,7 @@ export function ImageGrid(props: { images: Images }) {
           //   className="flex w-60 flex-col justify-between"
           //   onClick={() => store.setFullScreenImage(image.id)}
           // >
-          <Link href={`/img/${image.id}`}>
+          <Link href={`/img/${image.id}`} key={image.id}>
             <div className="relative h-44 w-60">
               <Image
                 alt={image.name}
