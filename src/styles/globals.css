@@ -90,12 +90,9 @@
 
 .modal {
   width: 80%;
-  max-width: 500px;
   height: auto;
-  max-height: 500px;
   border: none;
   border-radius: 12px;
-  background-color: white;
   padding: 20px;
   position: relative;
   display: flex;

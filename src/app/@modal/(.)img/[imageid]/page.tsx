@@ -17,7 +17,14 @@ export default async function ImagePage(props: {
 
   return (
     <Modal>
-      <Image src={imageData.url} alt={imageData.name} />
+      <div className="h-[80vh] w-[80vw]">
+        <Image
+          src={imageData.url}
+          alt={imageData.name}
+          fill
+          objectFit="contain"
+        />
+      </div>
     </Modal>
   );
 }

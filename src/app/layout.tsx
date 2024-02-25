@@ -25,15 +25,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body
-          className={`dark font-sans ${inter.variable} grid h-screen grid-rows-[auto_1fr]`}
-        >
-          <Topnav />
-          {children}
-          {modal}
-
-          <div id="clerk-components" />
-          <div id=":r3:" data-floating-ui-portal={true} />
+        <body className={`dark ${inter.variable}`}>
+          <div className="grid h-screen grid-rows-[auto_1fr] font-sans">
+            <Topnav />
+            {children}
+            {modal}
+          </div>
           <div id="modal-root" />
         </body>
       </html>
