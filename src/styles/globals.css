@@ -108,7 +108,7 @@
 
 .close-button:after {
   content: "x";
-  color: black;
+  color: white;
 }
 
 dialog:modal {
