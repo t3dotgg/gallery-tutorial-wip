@@ -19,16 +19,15 @@ export function Modal({ children }: { children: React.ReactNode }) {
   }
 
   return createPortal(
-    <div className="modal-backdrop">
-      <dialog
-        ref={dialogRef}
-        className="modal bg-slate-900/90"
-        onClose={onDismiss}
-      >
-        {children}
-        <button onClick={onDismiss} className="close-button" />
-      </dialog>
-    </div>,
+    // <div className="modal-backdrop m-0 bg-red-200 p-0">
+    <dialog
+      ref={dialogRef}
+      onClose={onDismiss}
+      className="m-0 h-screen w-screen bg-zinc-900/80 p-0"
+    >
+      {children}
+      <button onClick={onDismiss} className="close-button" />
+    </dialog>,
     document.getElementById("modal-root")!,
   );
 }

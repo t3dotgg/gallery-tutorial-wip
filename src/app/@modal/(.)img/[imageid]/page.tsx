@@ -17,13 +17,21 @@ export default async function ImagePage(props: {
 
   return (
     <Modal>
-      <div className="h-[80vh] w-[80vw]">
-        <Image
-          src={imageData.url}
-          alt={imageData.name}
-          fill
-          objectFit="contain"
-        />
+      <div className="flex h-full w-full p-0">
+        <div className="relative min-w-0 grow">
+          <Image
+            src={imageData.url}
+            alt={imageData.name}
+            fill
+            objectFit="contain"
+          />
+        </div>
+
+        <div className="flex w-72 min-w-0 flex-col border-l bg-black text-white">
+          <div className="border-b p-2 text-center text-xl">
+            {imageData.name}
+          </div>
+        </div>
       </div>
     </Modal>
   );
