@@ -42,7 +42,6 @@
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.19.3",
     "eslint": "^8.54.0",
-    "mysql2": "^3.6.1",
     "pg": "^8.11.3",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
