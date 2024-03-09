@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { Topnav } from "./_components/topnav";
 import { ClerkProvider } from "@clerk/nextjs";
 
+import "@uploadthing/react/styles.css";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",

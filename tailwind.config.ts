@@ -77,6 +77,4 @@ const config = {
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
-import { withUt } from "uploadthing/tw";
-
-export default withUt(config);
+export default config;
