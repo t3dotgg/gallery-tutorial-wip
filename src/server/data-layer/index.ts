@@ -3,12 +3,10 @@ import { db } from "../db";
 import { images } from "../db/schema";
 import type { InferSelectModel } from "drizzle-orm";
 
-export const getPosts = async () => {
-  return await db.query.posts.findMany();
-};
-
 export const createImage = async (input: { url: string; name: string }) => {
-  return await db.insert(images).values(input);
+  await db.insert(images).values(input);
+
+  return "success";
 };
 
 const mockData = [
