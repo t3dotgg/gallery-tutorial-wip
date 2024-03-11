@@ -3,12 +3,6 @@ import { db } from "../db";
 import { images } from "../db/schema";
 import type { InferSelectModel } from "drizzle-orm";
 
-export const createImage = async (input: { url: string; name: string }) => {
-  await db.insert(images).values(input);
-
-  return "success";
-};
-
 const mockData = [
   {
     url: "/temp/1.jpg",
@@ -40,8 +34,10 @@ const generateMockData = (amount: number) => {
 };
 
 type ImageType = InferSelectModel<typeof images>;
-export const getImages = async (): Promise<ImageType[]> => {
-  return await db.query.images.findMany();
-
-  // return generateMockData(24);
+export const getImagesByUserId = async (
+  userId: string,
+): Promise<ImageType[]> => {
+  return await db.query.images.findMany({
+    where: (images, { eq }) => eq(images.userId, userId),
+  });
 };

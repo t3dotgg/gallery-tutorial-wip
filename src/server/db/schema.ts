@@ -28,6 +28,8 @@ export const images = pgTable(
       .notNull(),
     updatedAt: timestamp("updatedAt"),
 
+    userId: varchar("user_id", { length: 256 }).notNull(),
+
     name: varchar("name", { length: 256 }).notNull(),
   },
   (imageModel) => ({
