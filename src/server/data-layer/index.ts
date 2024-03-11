@@ -39,5 +39,6 @@ export const getImagesByUserId = async (
 ): Promise<ImageType[]> => {
   return await db.query.images.findMany({
     where: (images, { eq }) => eq(images.userId, userId),
+    orderBy: (images, { desc }) => desc(images.createdAt),
   });
 };
