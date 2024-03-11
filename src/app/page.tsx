@@ -1,6 +1,8 @@
 import { getImages } from "~/server/data-layer";
 import { ImageGrid } from "./_components/image-grid";
 
+export const dynamic = "force-dynamic";
+
 async function safeFetch() {
   try {
     return { data: await getImages() } as const;
