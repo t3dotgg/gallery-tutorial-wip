@@ -17,8 +17,8 @@ const useGalleryState = create<GalleryState>((set) => ({
   clearFullScreenImage: () => set({ fullScreenImage: undefined }),
 }));
 
-import type { getImages } from "~/server/data-layer";
-type Images = Awaited<ReturnType<typeof getImages>>;
+import type { getImagesByUserId } from "~/server/data-layer";
+type Images = Awaited<ReturnType<typeof getImagesByUserId>>;
 
 export function ImageGrid(props: { images: Images }) {
   const store = useGalleryState();
@@ -32,11 +32,6 @@ export function ImageGrid(props: { images: Images }) {
       {fullScreenImage && <FullScreenImage image={fullScreenImage} />}
       <div className="mx-auto flex flex-wrap justify-center gap-4 p-4">
         {props.images.map((image) => (
-          // <button
-          //   key={image.id}
-          //   className="flex w-60 flex-col justify-between"
-          //   onClick={() => store.setFullScreenImage(image.id)}
-          // >
           <Link href={`/img/${image.id}`} key={image.id}>
             <div className="relative h-44 w-60">
               <Image
@@ -48,7 +43,6 @@ export function ImageGrid(props: { images: Images }) {
             </div>
             <div>{image.name}</div>
           </Link>
-          // </button>
         ))}
       </div>
     </>
