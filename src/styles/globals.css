@@ -75,43 +75,12 @@
   }
 }
 
-.modal-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1000;
+.spinner_ajPY {
+  transform-origin: center;
+  animation: spinner_AtaB 0.75s infinite linear;
 }
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 48px;
-  height: 48px;
-  background-color: transparent;
-  border: none;
-  border-radius: 15px; /* Circular shape */
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 500;
-  font-size: 24px; /* Adjust font size as needed */
-}
-
-.close-button:hover {
-  background-color: #eee;
-}
-
-.close-button:after {
-  content: "x";
-  color: white;
-}
-
-dialog:modal {
-  max-width: 100vw;
-  max-height: 100vh;
+@keyframes spinner_AtaB {
+  100% {
+    transform: rotate(360deg);
+  }
 }
