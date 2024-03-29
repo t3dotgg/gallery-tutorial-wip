@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 import "@uploadthing/react/styles.css";
 import { Toaster } from "~/components/ui/sonner";
+import { CSPostHogProvider } from "./_components/providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,17 +28,19 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={`dark ${inter.variable}`}>
-          <div className="grid h-screen grid-rows-[auto_1fr] font-sans">
-            <Topnav />
-            {children}
-            {modal}
-          </div>
-          <div id="modal-root" />
-          <Toaster />
-        </body>
-      </html>
+      <CSPostHogProvider>
+        <html lang="en">
+          <body className={`dark ${inter.variable}`}>
+            <div className="grid h-screen grid-rows-[auto_1fr] font-sans">
+              <Topnav />
+              {children}
+              {modal}
+            </div>
+            <div id="modal-root" />
+            <Toaster />
+          </body>
+        </html>
+      </CSPostHogProvider>
     </ClerkProvider>
   );
 }

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useUploadThing } from "~/components/uploadthing";
 import { LoadingSpinner } from "./loading-spinner";
-import { useEffect } from "react";
+import posthog from "posthog-js";
 
 // inferred input off useUploadThing
 type Input = Parameters<typeof useUploadThing>;
@@ -54,6 +54,7 @@ export const UploadComponent = () => {
 
   const { inputProps } = useUploadThingInputProps("imageUploader", {
     onBeforeUploadBegin: (files) => {
+      posthog.capture("Upload started", { count: files.length });
       toast(
         <div className="flex items-center justify-center gap-4">
           <LoadingSpinner />
@@ -66,7 +67,8 @@ export const UploadComponent = () => {
 
       return files;
     },
-    onClientUploadComplete: () => {
+    onClientUploadComplete: (results) => {
+      posthog.capture("Upload completed", { count: results?.length });
       toast.dismiss();
       toast.success("Upload complete!");
       router.refresh();
