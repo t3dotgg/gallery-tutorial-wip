@@ -7,6 +7,14 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "@uploadthing/react/styles.css";
 import { Toaster } from "~/components/ui/sonner";
 import { CSPostHogProvider } from "./_components/providers";
+import dynamic from "next/dynamic";
+
+const FeedbackWidget = dynamic(
+  () => import("./_components/sentry-feedback-widget"),
+  {
+    ssr: false,
+  },
+);
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,6 +46,7 @@ export default function RootLayout({
             </div>
             <div id="modal-root" />
             <Toaster />
+            <FeedbackWidget />
           </body>
         </html>
       </CSPostHogProvider>
