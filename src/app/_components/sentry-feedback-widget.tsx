@@ -1,30 +1,27 @@
 "use client";
 
 import { useAuth } from "@clerk/nextjs";
-import { feedbackIntegration } from "@sentry/nextjs";
+import * as Sentry from "@sentry/nextjs";
 import { useEffect, useState } from "react";
 
 function createWidget() {
-  const widget = feedbackIntegration({
-    // Disable injecting the default widget
-    autoInject: false,
-  }).createWidget();
-  return widget;
+  return Sentry.getFeedback()?.createWidget();
 }
 
 export default function SentryFeedbackWidget() {
   const auth = useAuth();
-  const [widget, setWidget] = useState<any>(null);
+  const [widget, setWidget] = useState<ReturnType<typeof createWidget> | null>(
+    null,
+  );
 
   useEffect(() => {
+    // Mount if signed in
     if (auth?.isSignedIn && !widget) {
       const newWidget = createWidget();
       setWidget(newWidget);
-      setTimeout(() => {
-        newWidget.appendToDom();
-      }, 1000);
     }
 
+    // Unmount if signed out
     if (!auth?.isSignedIn && widget) {
       console.log("removing from dom", widget);
       widget.removeFromDom();
@@ -32,5 +29,5 @@ export default function SentryFeedbackWidget() {
     }
   }, [auth, widget]);
 
-  return <div />;
+  return null;
 }
