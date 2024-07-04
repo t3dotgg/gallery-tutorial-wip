@@ -28,6 +28,11 @@ Sentry.init({
     }),
     Sentry.feedbackIntegration({
       autoInject: false,
+      showBranding: false,
+      colorScheme: "dark",
+      themeDark: {
+        background: "#222222",
+      },
     }),
   ],
 });
